@@ -6,6 +6,7 @@ app = Flask(__name__)
 app.json.ensure_ascii = False
 app.json.sort_keys = False
 
+<<<<<<< HEAD
 APP_TITLE = os.getenv(
     "APP_TITLE",
     "Планувальник подій"
@@ -17,6 +18,10 @@ APP_MESSAGE = os.getenv(
 )
 
 APP_VERSION = "1.1"
+=======
+APP_TITLE = os.getenv("APP_TITLE", "Планувальник подій")
+APP_VERSION = "1.0"
+>>>>>>> 5fd61a2 (Prepare app for CI/CD)
 
 EVENTS = [
     {"id": 1, "title": "Лекція «Розгортання застосунків у хмарі»",
@@ -31,6 +36,12 @@ EVENTS = [
 @app.route("/")
 def index():
     return f"""
+<h1>CI/CD Cloud App</h1>
+<p>{APP_TITLE}</p>
+<p>Версія застосунку розгортається автоматично.</p>
+<p>CI/CD deployment version {APP_VERSION}</p>
+"""
+<<<<<<< HEAD
 <!doctype html>
 <html lang="uk">
 <head>
@@ -82,12 +93,25 @@ def api_info():
         "student": "Середа Іван",
         "version": APP_VERSION
     })
+=======
+<h1>CI/CD Cloud App</h1>
+<p>{APP_TITLE}</p>
+<p>Версія застосунку розгортається автоматично.</p>
+"""
+
+
+@app.route("/health")
+def health():
+    return jsonify({"status": "ok"}), 200
+
+>>>>>>> 5fd61a2 (Prepare app for CI/CD)
 
 @app.route("/api/events")
 def events():
     return jsonify(EVENTS)
 
 
+<<<<<<< HEAD
 @app.route("/api/env")
 def env_info():
     return jsonify({
@@ -110,3 +134,8 @@ if __name__ == "__main__":
         port=port,
         debug=True
     )
+=======
+if __name__ == "__main__":
+    port = int(os.getenv("PORT", "5000"))
+    app.run(host="0.0.0.0", port=port, debug=True)
+>>>>>>> 5fd61a2 (Prepare app for CI/CD)
