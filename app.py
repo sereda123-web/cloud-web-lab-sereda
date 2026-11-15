@@ -41,7 +41,7 @@ def index():
 <p>Версія застосунку розгортається автоматично.</p>
 <p>CI/CD deployment version {APP_VERSION}</p>
 """
-
+"""
 <!doctype html>
 <html lang="uk">
 <head>
@@ -93,7 +93,7 @@ def api_info():
         "student": "Середа Іван",
         "version": APP_VERSION
     })
-
+"""
 <h1>CI/CD Cloud App</h1>
 <p>{APP_TITLE}</p>
 <p>Версія застосунку розгортається автоматично.</p>
@@ -111,7 +111,7 @@ def events():
     return jsonify(EVENTS)
 
 
-<<<<<<< HEAD
+
 @app.route("/api/env")
 def env_info():
     return jsonify({
@@ -134,8 +134,8 @@ if __name__ == "__main__":
         port=port,
         debug=True
     )
-=======
+
 if __name__ == "__main__":
     port = int(os.getenv("PORT", "5000"))
     app.run(host="0.0.0.0", port=port, debug=True)
->>>>>>> 5fd61a2 (Prepare app for CI/CD)
+(Prepare app for CI/CD)
