@@ -83,7 +83,6 @@ def api_info():
         "version": APP_VERSION
     })
 
-
 @app.route("/api/events")
 def events():
     return jsonify(EVENTS)
