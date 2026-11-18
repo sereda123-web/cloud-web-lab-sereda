@@ -20,6 +20,13 @@ EVENTS = [
 
 
 @app.route("/")
+def require_token():
+    expected = os.environ.get("ADMIN_TOKEN")
+    token = request.headers.get("Authorization", "")
+    if not expected or token != f"Bearer {expected}":
+        return jsonify({"error": "unauthorized"}), 401
+    return None
+
 def index():
     return f"""
 <h1>CI/CD Cloud App</h1>
