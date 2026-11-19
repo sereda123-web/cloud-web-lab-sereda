@@ -21,12 +21,12 @@ EVENTS = [
 
 def require_token():
     """Повертає відповідь 401, якщо токен відсутній або неправильний."""
-    expected = os.environ.get("ADMIN_TOKEN")
-    token = request.headers.get("Authorization", "")
-    if not expected or token != f"Bearer {expected}":
+    expected = (os.environ.get("ADMIN_TOKEN") or "").strip()
+    header = request.headers.get("Authorization", "").strip()
+    print("DEBUG expected_len:", len(expected), "header_len:", len(header), flush=True)
+    if not expected or header != f"Bearer {expected}":
         return jsonify({"error": "unauthorized"}), 401
     return None
-
 
 @app.route("/")
 def index():
