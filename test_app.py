@@ -22,7 +22,7 @@ def test_admin_stats_requires_token():
     client = app.test_client()
     response = client.get("/api/admin/stats")
 
-    assert response.status_code == 401  # EXPERIMENT: для експерименту змініть на 200
+    assert response.status_code == 999  # EXPERIMENT: для експерименту змініть на 200
 
 
 def test_create_record_requires_token():
